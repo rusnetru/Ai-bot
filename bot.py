@@ -24,7 +24,10 @@ async def news(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Не удалось получить новости. Проверьте API-ключ.")
 
 if __name__ == "__main__":
+    print("🟢 Бот запускается...")  # Это должно появиться в логах
     app = Application.builder().token(TELEGRAM_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("news", news))
+    print("🟢 Обработчики зарегистрированы")  # Проверка
     app.run_polling()
+    print("🔴 Бот остановлен")  # Если видите это - значит было падение
